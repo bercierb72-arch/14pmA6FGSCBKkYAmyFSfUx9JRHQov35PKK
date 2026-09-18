@@ -1,0 +1,5 @@
+Type,GoalName,TargetAmount,CurrentAmount,DueDate,WeeklyContribution,RemainingAmount,ProgressPercent,Status
+Debt,Credit Card A,3000,1200,2027-03-31,100,1800,40,On Track
+Debt,Car Loan,8000,2500,2028-06-30,120,5500,31.25,On Track
+Savings,Emergency Fund,10000,3500,2027-12-31,150,6500,35,On Track
+Savings,Vacation Fund,2500,400,2027-07-01,50,2100,16,Behind
