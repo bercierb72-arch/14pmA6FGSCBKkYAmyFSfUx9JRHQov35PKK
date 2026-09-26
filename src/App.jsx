@@ -7,18 +7,24 @@ const resources = [
     description:
       'Keep marketing teams aligned on compliant terminology, disclosures, and consumer-facing claims.',
     tag: 'FTC guidance',
+    href: '#updates',
+    cta: 'Review alerts',
   },
   {
     title: 'Supplier Code of Conduct',
     description:
       'Standardize sourcing expectations across natural-diamond vendors with one reusable template.',
     tag: 'Template',
+    href: '#checklist',
+    cta: 'Run self-audit',
   },
   {
     title: 'Mixed Inventory Disclosure Pack',
     description:
       'Equip sales teams to distinguish natural and laboratory-grown goods at every handoff.',
     tag: 'Operations',
+    href: '#toolkit',
+    cta: 'View toolkit',
   },
 ]
 
@@ -155,9 +161,9 @@ function App() {
                 <span className="badge">{resource.tag}</span>
                 <h3>{resource.title}</h3>
                 <p>{resource.description}</p>
-                <button type="button">
-                  Preview {resource.title}
-                </button>
+                <a href={resource.href} className="resource-link">
+                  {resource.cta}
+                </a>
               </article>
             ))}
           </div>

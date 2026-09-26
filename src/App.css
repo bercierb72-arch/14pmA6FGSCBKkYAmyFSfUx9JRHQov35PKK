@@ -42,7 +42,7 @@
 
 .topbar-link,
 .button,
-.resource-card button {
+.resource-link {
   justify-self: start;
   text-decoration: none;
   border-radius: 999px;
@@ -67,7 +67,7 @@
 }
 
 .button.secondary,
-.resource-card button {
+.resource-link {
   background: #fff;
   color: #16182c;
   border-color: #d6daf8;
@@ -77,8 +77,8 @@
 .topbar-link:focus-visible,
 .button:hover,
 .button:focus-visible,
-.resource-card button:hover,
-.resource-card button:focus-visible {
+.resource-link:hover,
+.resource-link:focus-visible {
   transform: translateY(-1px);
   box-shadow: 0 14px 32px rgba(58, 78, 189, 0.12);
 }
@@ -184,7 +184,7 @@
   font-weight: 700;
 }
 
-.resource-card button {
+.resource-link {
   margin-top: 1rem;
   padding: 0.75rem 1rem;
 }
