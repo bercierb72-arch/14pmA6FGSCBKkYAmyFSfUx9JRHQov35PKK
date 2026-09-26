@@ -1,0 +1,288 @@
+.app-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 20px 56px;
+}
+
+.topbar,
+.hero,
+.section-heading,
+.split-layout,
+.metrics-grid,
+.resource-grid,
+.hero-actions,
+.updates-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.topbar {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #5c5aed;
+  margin: 0 0 0.5rem;
+}
+
+.topbar h1,
+.hero h2,
+.section-heading h2,
+.resource-card h3,
+.workflow-list h3,
+.update-item h3 {
+  margin: 0;
+}
+
+.topbar-link,
+.button,
+.resource-card button {
+  justify-self: start;
+  text-decoration: none;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.topbar-link {
+  padding: 0.9rem 1.25rem;
+  color: #16182c;
+  background: #f2f4ff;
+}
+
+.button {
+  padding: 0.9rem 1.3rem;
+}
+
+.button.primary {
+  background: linear-gradient(135deg, #2d3ce6, #5c5aed);
+  color: #fff;
+}
+
+.button.secondary,
+.resource-card button {
+  background: #fff;
+  color: #16182c;
+  border-color: #d6daf8;
+}
+
+.topbar-link:hover,
+.topbar-link:focus-visible,
+.button:hover,
+.button:focus-visible,
+.resource-card button:hover,
+.resource-card button:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(58, 78, 189, 0.12);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(197, 203, 232, 0.8);
+  border-radius: 24px;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+}
+
+.hero {
+  grid-template-columns: minmax(0, 1.8fr) minmax(280px, 1fr);
+  align-items: stretch;
+  padding: 32px;
+}
+
+.lede {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #4d556d;
+  max-width: 60ch;
+}
+
+.hero-panel {
+  display: grid;
+  gap: 1rem;
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #151936, #1f2758);
+  color: #fff;
+}
+
+.hero-panel span,
+.metric span,
+.completion-pill {
+  color: #bfc8ff;
+  font-size: 0.92rem;
+}
+
+.hero-panel strong,
+.metric strong {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 1.45rem;
+}
+
+.metrics-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin: 24px 0;
+}
+
+.metric {
+  padding: 22px;
+}
+
+.metric p,
+.section-heading p,
+.resource-card p,
+.workflow-list p,
+.update-item p {
+  margin: 0;
+  color: #54607c;
+  line-height: 1.7;
+}
+
+.section-block {
+  padding: 28px;
+}
+
+.section-heading {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: end;
+  margin-bottom: 20px;
+}
+
+.section-heading.compact {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.resource-grid,
+.updates-list {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.resource-card,
+.update-item {
+  padding: 22px;
+  border: 1px solid #dfe4ff;
+  border-radius: 20px;
+  background: #f9faff;
+}
+
+.badge,
+.completion-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: #edf0ff;
+  color: #3340bf;
+  font-weight: 700;
+}
+
+.resource-card button {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+}
+
+.split-layout {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  margin: 24px 0;
+}
+
+.workflow-list,
+.checklist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.workflow-list {
+  counter-reset: flow;
+  display: grid;
+  gap: 1rem;
+}
+
+.workflow-list li {
+  position: relative;
+  padding: 1.1rem 1rem 1.1rem 4rem;
+  border-radius: 18px;
+  background: #f9faff;
+}
+
+.workflow-list li::before {
+  counter-increment: flow;
+  content: counter(flow);
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #2d3ce6;
+  color: #fff;
+  font-weight: 700;
+}
+
+.progress-bar {
+  height: 0.75rem;
+  background: #e6e9fb;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.progress-bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #2d3ce6, #67a0ff);
+}
+
+.checklist {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.checklist li {
+  border: 1px solid #dfe4ff;
+  border-radius: 18px;
+  background: #f9faff;
+}
+
+.checklist label {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  padding: 1rem;
+  align-items: start;
+  cursor: pointer;
+}
+
+.checklist input {
+  margin-top: 0.25rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: #2d3ce6;
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    padding: 20px 14px 40px;
+  }
+
+  .hero,
+  .section-block {
+    padding: 22px;
+  }
+
+  .section-heading.compact {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
