@@ -14,7 +14,7 @@ export async function POST(request: Request) {
 
     const payment = await withNwcClient(async (client) => client.payInvoice({ invoice }));
 
-    return NextResponse.json(payment, { status: 201 });
+    return NextResponse.json(payment);
   } catch (error) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unable to pay invoice." },
