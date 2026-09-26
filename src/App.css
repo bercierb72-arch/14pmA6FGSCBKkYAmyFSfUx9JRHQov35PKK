@@ -194,40 +194,26 @@
   margin: 24px 0;
 }
 
-.workflow-list,
 .checklist {
   margin: 0;
   padding: 0;
-  list-style: none;
 }
 
 .workflow-list {
-  counter-reset: flow;
   display: grid;
   gap: 1rem;
+  padding-left: 1.5rem;
 }
 
 .workflow-list li {
-  position: relative;
-  padding: 1.1rem 1rem 1.1rem 4rem;
+  padding: 1.1rem 1rem 1.1rem 0.85rem;
   border-radius: 18px;
   background: #f9faff;
 }
 
-.workflow-list li::before {
-  counter-increment: flow;
-  content: counter(flow);
-  position: absolute;
-  left: 1rem;
-  top: 1rem;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  background: #2d3ce6;
-  color: #fff;
+.workflow-list li::marker {
   font-weight: 700;
+  color: #2d3ce6;
 }
 
 .progress-bar {

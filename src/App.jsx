@@ -193,7 +193,7 @@ function App() {
                 <p className="eyebrow">Self-audit</p>
                 <h2>Disclosure readiness checklist</h2>
               </div>
-              <div className="completion-pill">{completedCount} of 4 done</div>
+              <div className="completion-pill">{completedCount} of {checklistItems.length} done</div>
             </div>
             <div
               className="progress-bar"
