@@ -16,9 +16,16 @@ describe('App', () => {
     const firstCheckbox = screen.getByLabelText(
       /separate natural and laboratory-grown inventory descriptions/i,
     )
+    const secondCheckbox = screen.getByLabelText(
+      /confirm supplier disclosure agreements are signed and current/i,
+    )
     const thirdCheckbox = screen.getByLabelText(
       /document escalation steps for sourcing concerns/i,
     )
+
+    expect(firstCheckbox).toBeChecked()
+    expect(secondCheckbox).toBeChecked()
+    expect(thirdCheckbox).not.toBeChecked()
 
     fireEvent.click(firstCheckbox)
     expect(screen.getByText('1 of 4 done')).toBeInTheDocument()

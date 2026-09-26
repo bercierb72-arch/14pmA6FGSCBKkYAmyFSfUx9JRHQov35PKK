@@ -76,6 +76,7 @@ function App() {
   const completion = checklistItems.length
     ? Math.round((completedCount / checklistItems.length) * 100)
     : 0
+  const completionLabel = `${completedCount} of ${checklistItems.length} done`
 
   const toggleItem = (index) => {
     setCheckedItems((current) =>
@@ -195,12 +196,15 @@ function App() {
                 <p className="eyebrow">Self-audit</p>
                 <h2>Disclosure readiness checklist</h2>
               </div>
-              <div className="completion-pill">{completedCount} of {checklistItems.length} done</div>
+              <div className="completion-pill" aria-live="polite">
+                {completionLabel}
+              </div>
             </div>
             <div
               className="progress-bar"
               role="progressbar"
               aria-label="Disclosure readiness completion"
+              aria-valuetext={completionLabel}
               aria-valuemin={0}
               aria-valuemax={100}
               aria-valuenow={completion}
