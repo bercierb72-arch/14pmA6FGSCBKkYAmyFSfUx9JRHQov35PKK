@@ -17,6 +17,17 @@ export default defineConfig([
       },
     },
   },
+  {
+    files: ['**/*.test.{js,jsx}'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        describe: 'readonly',
+        expect: 'readonly',
+        it: 'readonly',
+      },
+    },
+  },
   js.configs.recommended,
   reactHooks.configs.flat['recommended-latest'],
   reactRefresh.configs.vite,
