@@ -73,7 +73,9 @@ function App() {
     [checkedItems],
   )
 
-  const completion = Math.round((completedCount / checklistItems.length) * 100)
+  const completion = checklistItems.length
+    ? Math.round((completedCount / checklistItems.length) * 100)
+    : 0
 
   const toggleItem = (index) => {
     setCheckedItems((current) =>
