@@ -6,7 +6,11 @@ export const metadata: Metadata = {
   description: "A simple NWC-powered app for checking balance, creating invoices, and paying Lightning invoices.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+type RootLayoutProps = Readonly<{
+  children: React.ReactNode;
+}>;
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body>{children}</body>

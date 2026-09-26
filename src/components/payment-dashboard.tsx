@@ -87,11 +87,20 @@ export function PaymentDashboard({ initialBalance, initialTransactions, initialE
   const stats = useMemo(() => {
     const incoming = transactions.filter((transaction) => transaction.type === "incoming");
     const outgoing = transactions.filter((transaction) => transaction.type === "outgoing");
+    const latestTimestamp = transactions.reduce<number | undefined>((latest, transaction) => {
+      const candidate = transaction.settled_at || transaction.created_at;
+
+      if (!candidate) {
+        return latest;
+      }
+
+      return latest === undefined ? candidate : Math.max(latest, candidate);
+    }, undefined);
 
     return {
       incomingCount: incoming.length,
       outgoingCount: outgoing.length,
-      lastActivity: formatTimestamp(transactions[0]?.settled_at || transactions[0]?.created_at),
+      lastActivity: formatTimestamp(latestTimestamp),
     };
   }, [transactions]);
 
