@@ -74,13 +74,18 @@
 }
 
 .topbar-link:hover,
-.topbar-link:focus-visible,
 .button:hover,
-.button:focus-visible,
-.resource-link:hover,
-.resource-link:focus-visible {
+.resource-link:hover {
   transform: translateY(-1px);
   box-shadow: 0 14px 32px rgba(58, 78, 189, 0.12);
+}
+
+.topbar-link:focus-visible,
+.button:focus-visible,
+.resource-link:focus-visible {
+  outline: 3px solid #2d3ce6;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(92, 90, 237, 0.16);
 }
 
 .card {
