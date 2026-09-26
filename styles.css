@@ -95,6 +95,12 @@ a {
   transform: translateY(-1px);
 }
 
+.button:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+  transform: translateY(-1px);
+}
+
 .button--primary {
   background: #fff7ef;
   color: var(--accent-dark);
@@ -107,6 +113,7 @@ a {
 
 .section {
   padding: 4.5rem 0;
+  scroll-margin-top: 1.5rem;
 }
 
 .section--alt {
@@ -185,6 +192,12 @@ a {
 .faq-list summary {
   cursor: pointer;
   font-weight: 700;
+}
+
+.faq-list summary:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 6px;
 }
 
 .faq-list p {
