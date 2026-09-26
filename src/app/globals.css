@@ -27,7 +27,7 @@ body {
   background:
     radial-gradient(circle at top, rgba(245, 158, 11, 0.16), transparent 30%),
     linear-gradient(180deg, #020617 0%, #0f172a 100%);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: Inter, Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -288,7 +288,7 @@ tbody td {
 }
 
 code {
-  font-family: var(--font-geist-mono), monospace;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
 @media (max-width: 960px) {
