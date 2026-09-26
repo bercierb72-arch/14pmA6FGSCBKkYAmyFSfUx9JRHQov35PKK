@@ -208,8 +208,9 @@ function App() {
             <ul className="checklist">
               {checklistItems.map((item, index) => (
                 <li key={item}>
-                  <label>
+                  <label htmlFor={`checklist-item-${index}`}>
                     <input
+                      id={`checklist-item-${index}`}
                       type="checkbox"
                       checked={checkedItems[index]}
                       onChange={() => toggleItem(index)}
