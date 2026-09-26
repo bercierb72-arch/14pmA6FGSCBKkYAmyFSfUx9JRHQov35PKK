@@ -3,20 +3,25 @@ import { withNwcClient } from "@/lib/nwc";
 
 async function getInitialWalletData() {
   try {
-    const [balanceResponse, transactionsResponse] = await Promise.all([
-      withNwcClient(async (client) => client.getBalance()),
-      withNwcClient(async (client) =>
+    const walletSnapshot = await withNwcClient(async (client) => {
+      const [balance, transactions] = await Promise.all([
+        client.getBalance(),
         client.listTransactions({
           limit: 10,
           offset: 0,
           unpaid: false,
         }),
-      ),
-    ]);
+      ]);
+
+      return {
+        balance: balance.balance,
+        transactions: transactions.transactions,
+      };
+    });
 
     return {
-      initialBalance: balanceResponse.balance,
-      initialTransactions: transactionsResponse.transactions,
+      initialBalance: walletSnapshot.balance,
+      initialTransactions: walletSnapshot.transactions,
       initialError: null,
     };
   } catch (error) {

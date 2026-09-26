@@ -24,13 +24,9 @@ type Transaction = {
   payment_hash: string;
 };
 
-type BalanceResponse = {
+type WalletSnapshot = {
   balance: number;
-};
-
-type TransactionsResponse = {
   transactions: Transaction[];
-  total_count: number;
 };
 
 type PaymentDashboardProps = {
@@ -109,13 +105,12 @@ export function PaymentDashboard({ initialBalance, initialTransactions, initialE
     setRefreshError(null);
 
     try {
-      const [balanceResponse, transactionsResponse] = await Promise.all([
-        fetch("/api/balance", { cache: "no-store" }).then((response) => parseResponse<BalanceResponse>(response)),
-        fetch("/api/transactions", { cache: "no-store" }).then((response) => parseResponse<TransactionsResponse>(response)),
-      ]);
+      const snapshot = await fetch("/api/wallet", { cache: "no-store" }).then((response) =>
+        parseResponse<WalletSnapshot>(response),
+      );
 
-      setBalance(balanceResponse.balance);
-      setTransactions(transactionsResponse.transactions);
+      setBalance(snapshot.balance);
+      setTransactions(snapshot.transactions);
     } catch (error) {
       setRefreshError(error instanceof Error ? error.message : "Unable to load wallet data.");
     } finally {
@@ -336,7 +331,7 @@ export function PaymentDashboard({ initialBalance, initialTransactions, initialE
         </div>
 
         {transactions.length === 0 ? (
-          <p className="empty-state">No settled transactions yet.</p>
+          <p className="empty-state">No recent transactions yet.</p>
         ) : (
           <div className="table-wrapper">
             <table>
