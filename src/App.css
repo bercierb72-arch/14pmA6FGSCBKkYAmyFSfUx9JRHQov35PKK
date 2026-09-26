@@ -74,8 +74,11 @@
 }
 
 .topbar-link:hover,
+.topbar-link:focus-visible,
 .button:hover,
-.resource-card button:hover {
+.button:focus-visible,
+.resource-card button:hover,
+.resource-card button:focus-visible {
   transform: translateY(-1px);
   box-shadow: 0 14px 32px rgba(58, 78, 189, 0.12);
 }

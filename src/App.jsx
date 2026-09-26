@@ -60,7 +60,7 @@ const updates = [
 ]
 
 function App() {
-  const [checkedItems, setCheckedItems] = useState([true, true, false, false])
+  const [checkedItems, setCheckedItems] = useState(() => checklistItems.map((_, index) => index < 2))
 
   const completedCount = useMemo(
     () => checkedItems.filter(Boolean).length,
@@ -155,7 +155,7 @@ function App() {
                 <span className="badge">{resource.tag}</span>
                 <h3>{resource.title}</h3>
                 <p>{resource.description}</p>
-                <button type="button" aria-label={`Preview ${resource.title}`}>
+                <button type="button">
                   Preview {resource.title}
                 </button>
               </article>
