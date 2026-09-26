@@ -1,10 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useMemo, useState } from "react";
-
-type BalanceResponse = {
-  balance: number;
-};
+import { FormEvent, useMemo, useState } from "react";
 
 type InvoiceResponse = {
   invoice: string;
@@ -28,13 +24,19 @@ type Transaction = {
   payment_hash: string;
 };
 
+type BalanceResponse = {
+  balance: number;
+};
+
 type TransactionsResponse = {
   transactions: Transaction[];
   total_count: number;
 };
 
-type ApiError = {
-  error: string;
+type PaymentDashboardProps = {
+  initialBalance: number | null;
+  initialTransactions: Transaction[];
+  initialError: string | null;
 };
 
 const defaultInvoiceForm = {
@@ -44,10 +46,15 @@ const defaultInvoiceForm = {
 };
 
 async function parseResponse<T>(response: Response): Promise<T> {
-  const data = (await response.json()) as T | ApiError;
+  const data: unknown = await response.json();
 
   if (!response.ok) {
-    throw new Error("error" in data ? data.error : "Request failed.");
+    const message =
+      typeof data === "object" && data !== null && "error" in data && typeof data.error === "string"
+        ? data.error
+        : "Request failed.";
+
+    throw new Error(message);
   }
 
   return data as T;
@@ -61,11 +68,11 @@ function formatTimestamp(timestamp?: number) {
   return new Date(timestamp * 1000).toLocaleString();
 }
 
-export function PaymentDashboard() {
-  const [balance, setBalance] = useState<number | null>(null);
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const [loadingWallet, setLoadingWallet] = useState(true);
-  const [refreshError, setRefreshError] = useState<string | null>(null);
+export function PaymentDashboard({ initialBalance, initialTransactions, initialError }: PaymentDashboardProps) {
+  const [balance, setBalance] = useState<number | null>(initialBalance);
+  const [transactions, setTransactions] = useState<Transaction[]>(initialTransactions);
+  const [loadingWallet, setLoadingWallet] = useState(false);
+  const [refreshError, setRefreshError] = useState<string | null>(initialError);
 
   const [invoiceForm, setInvoiceForm] = useState(defaultInvoiceForm);
   const [invoiceResult, setInvoiceResult] = useState<InvoiceResponse | null>(null);
@@ -106,10 +113,6 @@ export function PaymentDashboard() {
       setLoadingWallet(false);
     }
   }
-
-  useEffect(() => {
-    void refreshWallet();
-  }, []);
 
   async function handleCreateInvoice(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();

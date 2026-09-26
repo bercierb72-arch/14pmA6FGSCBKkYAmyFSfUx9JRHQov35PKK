@@ -1,4 +1,4 @@
-import { nwc } from "@getalby/sdk";
+import { NWCClient } from "@getalby/sdk";
 
 function getNwcUrl() {
   const nostrWalletConnectUrl = process.env.NWC_URL;
@@ -10,8 +10,8 @@ function getNwcUrl() {
   return nostrWalletConnectUrl;
 }
 
-export async function withNwcClient<T>(callback: (client: InstanceType<typeof nwc.NWCClient>) => Promise<T>) {
-  const client = new nwc.NWCClient({
+export async function withNwcClient<T>(callback: (client: NWCClient) => Promise<T>) {
+  const client = new NWCClient({
     nostrWalletConnectUrl: getNwcUrl(),
   });
 
