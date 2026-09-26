@@ -155,7 +155,9 @@ function App() {
                 <span className="badge">{resource.tag}</span>
                 <h3>{resource.title}</h3>
                 <p>{resource.description}</p>
-                <button type="button">Preview resource</button>
+                <button type="button" aria-label={`Preview ${resource.title}`}>
+                  Preview {resource.title}
+                </button>
               </article>
             ))}
           </div>
@@ -187,7 +189,14 @@ function App() {
               </div>
               <div className="completion-pill">{completedCount} of 4 done</div>
             </div>
-            <div className="progress-bar" aria-hidden="true">
+            <div
+              className="progress-bar"
+              role="progressbar"
+              aria-label="Disclosure readiness completion"
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-valuenow={completion}
+            >
               <span style={{ width: `${completion}%` }} />
             </div>
             <ul className="checklist">
