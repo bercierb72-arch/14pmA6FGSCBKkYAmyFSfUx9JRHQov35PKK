@@ -74,8 +74,11 @@
 }
 
 .topbar-link:hover,
+.topbar-link:active,
 .button:hover,
-.resource-link:hover {
+.button:active,
+.resource-link:hover,
+.resource-link:active {
   transform: translateY(-1px);
   box-shadow: 0 14px 32px rgba(58, 78, 189, 0.12);
 }
