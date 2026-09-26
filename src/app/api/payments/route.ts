@@ -4,8 +4,15 @@ import { withNwcClient } from "@/lib/nwc";
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
+  let body: { invoice?: string };
+
   try {
-    const body = (await request.json()) as { invoice?: string };
+    body = (await request.json()) as { invoice?: string };
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON body." }, { status: 400 });
+  }
+
+  try {
     const invoice = body.invoice?.trim();
 
     if (!invoice) {

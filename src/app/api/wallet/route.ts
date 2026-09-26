@@ -11,6 +11,7 @@ export async function GET() {
         client.listTransactions({
           limit: 10,
           offset: 0,
+          unpaid: false,
         }),
       ]);
 

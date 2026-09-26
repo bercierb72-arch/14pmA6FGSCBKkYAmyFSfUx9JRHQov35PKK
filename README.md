@@ -5,7 +5,7 @@ A simple Next.js payment app inspired by [startwithbitcoin](https://github.com/b
 - check your Lightning balance
 - create invoices to receive sats
 - pay BOLT11 invoices
-- review recent transactions and payment state updates
+- review recent settled transactions
 
 ## Prerequisites
 
@@ -50,4 +50,4 @@ A simple Next.js payment app inspired by [startwithbitcoin](https://github.com/b
 ## Notes
 
 - Keep `NWC_URL` in `.env.local` only. The app reads it server-side through API routes.
-- The dashboard shows the latest 10 transactions returned by the wallet, including pending payment state updates.
+- The dashboard shows the latest 10 settled transactions returned by the wallet. Use the refresh action after payment settlement to update the view.

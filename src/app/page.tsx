@@ -9,6 +9,7 @@ async function getInitialWalletData() {
         client.listTransactions({
           limit: 10,
           offset: 0,
+          unpaid: false,
         }),
       ]);
 

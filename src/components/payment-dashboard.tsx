@@ -139,7 +139,6 @@ export function PaymentDashboard({ initialBalance, initialTransactions, initialE
 
       const data = await parseResponse<InvoiceResponse>(response);
       setInvoiceResult(data);
-      await refreshWallet();
     } catch (error) {
       setInvoiceError(error instanceof Error ? error.message : "Unable to create invoice.");
     } finally {
@@ -165,7 +164,6 @@ export function PaymentDashboard({ initialBalance, initialTransactions, initialE
       const data = await parseResponse<PaymentResponse>(response);
       setPaymentResult(data);
       setBolt11("");
-      await refreshWallet();
     } catch (error) {
       setPaymentError(error instanceof Error ? error.message : "Unable to pay invoice.");
     } finally {
@@ -264,6 +262,7 @@ export function PaymentDashboard({ initialBalance, initialTransactions, initialE
           {invoiceResult ? (
             <div className="result">
               <p className="label">Invoice</p>
+              <p className="feedback">New invoices appear in history after settlement. Share the BOLT11 string below with the payer.</p>
               <textarea readOnly rows={5} value={invoiceResult.invoice} />
               <dl>
                 <div>
@@ -307,6 +306,7 @@ export function PaymentDashboard({ initialBalance, initialTransactions, initialE
           {paymentResult ? (
             <div className="result">
               <p className="label">Payment sent</p>
+              <p className="feedback">Use refresh wallet after settlement to update balance and history.</p>
               <dl>
                 <div>
                   <dt>Preimage</dt>
